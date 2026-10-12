@@ -4,7 +4,7 @@ Complemento opcional para [Rodaje](https://github.com/Dathinel/rodaje): 8 looks 
 
 ## Instalar en Rodaje
 
-Descarga `rodaje-filtros-<versión>.paquete` de las releases y, en Rodaje, usa «Instalar desde archivo…» en Complementos o suéltalo sobre la biblioteca. Los looks aparecen en Filtros; las LUT sueltas también, para usarlas con la intensidad que quieras.
+En Rodaje, Complementos → Instalar lo baja, comprueba su firma y lo instala. A mano: descarga `rodaje-filtros-<versión>.paquete` de las releases y, en Rodaje, usa «Instalar desde archivo…» en Complementos o suéltalo sobre la biblioteca. Los looks aparecen en Filtros; las LUT sueltas también, para usarlas con la intensidad que quieras.
 
 ## Construir el paquete
 
