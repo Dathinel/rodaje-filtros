@@ -1,0 +1,18 @@
+{
+  "format": "rodaje.filter",
+  "version": 1,
+  "id": "cian-suave",
+  "name": "Cian suave",
+  "description": "Frío leve, con las sombras hacia el cian.",
+  "effects": [
+    {
+      "type": "rodaje.color",
+      "parameters": {
+        "lutIntensity": 1
+      },
+      "options": {
+        "lut": "./lut-cian-suave"
+      }
+    }
+  ]
+}

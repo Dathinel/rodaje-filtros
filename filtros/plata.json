@@ -1,0 +1,18 @@
+{
+  "format": "rodaje.filter",
+  "version": 1,
+  "id": "plata",
+  "name": "Plata",
+  "description": "Blanqueo parcial: poco color y mucho contraste.",
+  "effects": [
+    {
+      "type": "rodaje.color",
+      "parameters": {
+        "lutIntensity": 1
+      },
+      "options": {
+        "lut": "./lut-plata"
+      }
+    }
+  ]
+}

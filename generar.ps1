@@ -1,7 +1,7 @@
-﻿# Genera las 8 LUT de los looks de rodaje-filtros en <Destino>\luts\, con fórmulas propias y deterministas:
+﻿# Genera las 13 LUT de los looks de rodaje-filtros en <Destino>\luts\, con fórmulas propias y deterministas:
 # la misma salida byte a byte en cualquier equipo. Lo llama empaquetar.ps1.
 # Cada look es una función de un color RGB de 0 a 1 que devuelve otro; la LUT la muestrea en una rejilla de 33³.
-# Las fórmulas van en C# porque en PowerShell las 8 × 33³ llamadas tardan minutos.
+# Las fórmulas van en C# porque en PowerShell las 13 × 33³ llamadas tardan minutos.
 param([Parameter(Mandatory = $true)][string]$Destino)
 
 $ErrorActionPreference = 'Stop'
@@ -22,6 +22,7 @@ namespace RodajeFiltros
         public static readonly string[] Names =
         {
             "calido", "frio", "verde-azulado-naranja", "blanco-y-negro", "desvaido", "vivo", "noche", "cine",
+            "sepia", "alto-contraste", "pastel", "cian-suave", "plata",
         };
 
         public static void Apply(string name, double r, double g, double b, double[] o)
@@ -70,6 +71,34 @@ namespace RodajeFiltros
                     Set(o, 0.02 + o[0] * 0.97 + 0.03 * t, 0.025 + o[1] * 0.96 + 0.01 * t, 0.03 + o[2] * 0.95 - 0.03 * t);
                     break;
                 }
+                case "sepia":
+                {
+                    // Monocromo virado a marrón: cada canal es la luminancia con su propia ganancia.
+                    double l = S(Luma(r, g, b), 0.2);
+                    Set(o, 0.06 + l * 0.98, 0.04 + l * 0.9, 0.02 + l * 0.74);
+                    break;
+                }
+                case "alto-contraste":
+                    Saturate(S(S(r, 0.6), 0.4), S(S(g, 0.6), 0.4), S(S(b, 0.6), 0.4), 1.1, o);
+                    break;
+                case "pastel":
+                    // Color suave y claro: menos saturación, negros muy levantados y un toque rosado.
+                    Saturate(Math.Pow(r, 0.85), Math.Pow(g, 0.85), Math.Pow(b, 0.85), 0.5, o);
+                    Set(o, 0.13 + o[0] * 0.86, 0.1 + o[1] * 0.86, 0.12 + o[2] * 0.85);
+                    break;
+                case "cian-suave":
+                {
+                    // Frío leve con las sombras hacia el cian y las luces casi neutras.
+                    r = S(r, 0.15); g = S(g, 0.15); b = S(b, 0.15);
+                    double t = Smooth(Luma(r, g, b));
+                    Set(o, r * 0.96 - 0.04 * (1 - t), g * 0.99 + 0.015 * (1 - t), b * 1.02 + 0.03 * (1 - t));
+                    break;
+                }
+                case "plata":
+                    // Blanqueo parcial: la luminancia se mezcla con el color y sube el contraste.
+                    Saturate(r, g, b, 0.4, o);
+                    Set(o, S(o[0], 0.5), S(o[1], 0.5), S(o[2], 0.5));
+                    break;
                 default:
                     throw new ArgumentException("Look desconocido: " + name);
             }

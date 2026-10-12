@@ -1,10 +1,10 @@
 {
   "formatVersion": 1,
   "id": "rodaje-filtros",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "kind": "content",
   "name": "Filtros",
-  "description": "8 looks con LUT 3D generadas por fórmulas propias, sobre la corrección de color de Rodaje. Contenido propio de dominio público (CC0).",
+  "description": "13 looks con LUT 3D generadas por fórmulas propias, sobre la corrección de color de Rodaje. Contenido propio de dominio público (CC0).",
   "author": "Dathinel",
   "license": "CC0-1.0",
   "repository": "https://github.com/Dathinel/rodaje-filtros",
@@ -69,6 +69,41 @@
       "description": "Contraste suave, luces cálidas, sombras frías y viñeta."
     },
     {
+      "id": "sepia",
+      "kind": "filter",
+      "name": "Sepia",
+      "file": "filtros/sepia.json",
+      "description": "Monocromo virado a marrón, como una foto antigua."
+    },
+    {
+      "id": "alto-contraste",
+      "kind": "filter",
+      "name": "Alto contraste",
+      "file": "filtros/alto-contraste.json",
+      "description": "Negros profundos, luces brillantes y algo más de color."
+    },
+    {
+      "id": "pastel",
+      "kind": "filter",
+      "name": "Pastel",
+      "file": "filtros/pastel.json",
+      "description": "Color suave y claro, con un toque rosado."
+    },
+    {
+      "id": "cian-suave",
+      "kind": "filter",
+      "name": "Cian suave",
+      "file": "filtros/cian-suave.json",
+      "description": "Frío leve, con las sombras hacia el cian."
+    },
+    {
+      "id": "plata",
+      "kind": "filter",
+      "name": "Plata",
+      "file": "filtros/plata.json",
+      "description": "Blanqueo parcial: poco color y mucho contraste."
+    },
+    {
       "id": "lut-calido",
       "kind": "lut",
       "name": "LUT Cálido",
@@ -115,6 +150,36 @@
       "kind": "lut",
       "name": "LUT Cine",
       "file": "luts/cine.cube"
+    },
+    {
+      "id": "lut-sepia",
+      "kind": "lut",
+      "name": "LUT Sepia",
+      "file": "luts/sepia.cube"
+    },
+    {
+      "id": "lut-alto-contraste",
+      "kind": "lut",
+      "name": "LUT Alto contraste",
+      "file": "luts/alto-contraste.cube"
+    },
+    {
+      "id": "lut-pastel",
+      "kind": "lut",
+      "name": "LUT Pastel",
+      "file": "luts/pastel.cube"
+    },
+    {
+      "id": "lut-cian-suave",
+      "kind": "lut",
+      "name": "LUT Cian suave",
+      "file": "luts/cian-suave.cube"
+    },
+    {
+      "id": "lut-plata",
+      "kind": "lut",
+      "name": "LUT Plata",
+      "file": "luts/plata.cube"
     }
   ]
 }
